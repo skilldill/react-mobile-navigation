@@ -25,6 +25,7 @@ export const Stack: FC<StackProps> = (props) => {
     return (
         <div className={styles.stackNavigation} style={{display: activeStack === name ? 'block' : 'none'}}>
             <ScreenIOS 
+                stackName={name}
                 index={0} 
                 translated={stackMap[name] && 
                     stackMap[name].history.length > 0 && 
@@ -37,6 +38,7 @@ export const Stack: FC<StackProps> = (props) => {
             {!!stackMap && !!stackMap[name] && (stackMap[name].history.length > 0) && (
                 stackMap[name].history.map((screen, i) => 
                     <ScreenIOS 
+                        stackName={name}
                         animated
                         key={i} 
                         index={i} 

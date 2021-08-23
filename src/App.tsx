@@ -4,7 +4,7 @@ import { MobileNavigation, useMobileNavigation } from './MobileNavigation';
 import { Stack, StackScreen } from './StackNavigation';
 
 const FirstScreen = () => {
-  const {history} = useMobileNavigation("baseStack");
+  const history = useMobileNavigation("baseStack");
 
   return (
     <div>
@@ -18,7 +18,7 @@ const FirstScreen = () => {
 }
 
 const SecondScreen = () => {
-  const {history} = useMobileNavigation("baseStack");
+  const history = useMobileNavigation("baseStack");
 
   return (
     <div>
@@ -36,7 +36,7 @@ const SecondScreen = () => {
 }
 
 const ThridScreen = () => {
-  const {history} = useMobileNavigation("baseStack");
+  const history = useMobileNavigation("baseStack");
 
   return (
     <div>

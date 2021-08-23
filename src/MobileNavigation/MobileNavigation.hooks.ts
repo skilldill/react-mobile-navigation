@@ -9,7 +9,7 @@ export const useMobileNavigation = (stackName: string) => {
         back: () => navigation.back(stackName),
     }
 
-    return {history};
+    return history;
 }
 
 /**
@@ -24,7 +24,7 @@ export const MobileNavigationService = (stackName: string) => {
     }
 
     return {
-        history,
+        ...history,
 
         stackMap: navigation.stackMap,
         activeStack: navigation.activeStack,

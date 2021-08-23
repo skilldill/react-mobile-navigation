@@ -1,25 +1,56 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import { MobileNavigation, useMobileNavigation } from './MobileNavigation';
+import { Stack, StackScreen } from './StackNavigation';
+
+const FirstScreen = () => {
+  const {history} = useMobileNavigation("baseStack");
+
+  return (
+    <div>
+      <h1>FIRST</h1>
+      <button onClick={() => history.push('second')}>
+        SECOND SCREEN
+      </button>
+    </div>
+  )
+}
+
+const SecondScreen = () => {
+  return (
+    <div>
+      <h1>SECOND</h1>
+    </div>
+  )
+}
+
+const ThridScreen = () => {
+  return (
+    <div>
+      <h1>THIRD</h1>
+    </div>
+  )
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MobileNavigation>
+      <Stack name="baseStack">
+
+        <StackScreen name="first">
+          <FirstScreen />
+        </StackScreen>
+
+        <StackScreen name="second">
+          <SecondScreen />
+        </StackScreen>
+
+        <StackScreen name="third">
+          <ThridScreen />
+        </StackScreen>
+
+      </Stack>
+    </MobileNavigation>
   );
 }
 

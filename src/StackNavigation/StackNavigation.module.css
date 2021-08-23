@@ -1,3 +1,47 @@
+body {
+    touch-action: none;
+}
+
 .stackNavigation {
-    
+    position: relative;
+    height: 100vh;
+}
+
+.screenAndroid {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #fff;
+}
+
+
+/* IOS */
+@keyframes translationForwardIOS {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes translationBackIOS {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.screenIOS {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #fff;
+    animation: translationForwardIOS .2s ease-out 0s;
+}
+
+.screenIOSclose {
+    animation: translationBackIOS .2s ease-out 0s;
 }

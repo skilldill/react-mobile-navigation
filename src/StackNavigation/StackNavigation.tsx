@@ -1,6 +1,8 @@
 import React, {FC, useEffect, useState} from "react";
 import { MobileNavigationService } from "../MobileNavigation";
-import { AnimatedScreen } from "./AnimatedScreen";
+
+import { ScreenAndroid } from "./ScreenAndroid";
+import { ScreenIOS } from "./ScreenIOS";
 
 import styles from "./StackNavigation.module.css";
 import { createStackScreensMap } from "./StackNavigation.utils";
@@ -18,21 +20,23 @@ export const Stack: FC<StackProps> = (props) => {
         addStack(name);
     }, [])
 
+    useEffect(() => console.log(stackMap), [stackMap])
+
     const stackScreensMap = createStackScreensMap(children);
 
     return (
         <div className={styles.stackNavigation} style={{display: activeStack === name ? 'block' : 'none'}}>
-            <AnimatedScreen>
+            <ScreenIOS index={0}>
                 {(children as any[])[0]}
-            </AnimatedScreen>
+            </ScreenIOS>
 
             {!!stackMap && !!stackMap[name] && (stackMap[name].history.length > 0) && (
-                stackMap[name].history.map((screenName, i) => 
-                    <AnimatedScreen key={i}>
-                        {stackScreensMap[screenName]}
-                    </AnimatedScreen>
+                stackMap[name].history.map((screen, i) => 
+                    <ScreenIOS key={i} index={i} closing={screen.state === 'closing'}>
+                        {stackScreensMap[screen.name]}
+                    </ScreenIOS>
                 )
-             )}
+            )}
         </div>
     )
 }

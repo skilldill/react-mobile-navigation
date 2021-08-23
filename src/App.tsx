@@ -9,6 +9,7 @@ const FirstScreen = () => {
   return (
     <div>
       <h1>FIRST</h1>
+
       <button onClick={() => history.push('second')}>
         SECOND SCREEN
       </button>
@@ -17,17 +18,33 @@ const FirstScreen = () => {
 }
 
 const SecondScreen = () => {
+  const {history} = useMobileNavigation("baseStack");
+
   return (
     <div>
       <h1>SECOND</h1>
+
+      <button onClick={history.back}>
+        BACK
+      </button>
+
+      <button onClick={() => history.push('third')}>
+        THIRD SCREEN
+      </button>
     </div>
   )
 }
 
 const ThridScreen = () => {
+  const {history} = useMobileNavigation("baseStack");
+
   return (
     <div>
       <h1>THIRD</h1>
+
+      <button onClick={history.back}>
+        BACK
+      </button>
     </div>
   )
 }

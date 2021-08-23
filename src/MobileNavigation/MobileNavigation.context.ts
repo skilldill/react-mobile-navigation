@@ -2,7 +2,7 @@ import {createContext} from "react";
 
 interface MobileNavigationContextModel {
     activeStack: string | undefined
-    stackMap: {[key: string]: {history: string[]}};
+    stackMap: {[key: string]: {history: {name: string, state: 'show' | 'closing'}[]}};
 
     setActiveStack: (stackName: string) => void;
     push: (stackName: string, name: string) => void;

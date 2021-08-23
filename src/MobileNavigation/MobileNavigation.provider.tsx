@@ -3,7 +3,7 @@ import React, { FC, useState } from "react";
 import {MobileNavigationContext} from "./MobileNavigation.context";
 
 export const MobileNavigation: FC = ({children}) => {
-    const [stackMap, setStackMap] = useState<{[key: string]: {history: string[]}}>({});
+    const [stackMap, setStackMap] = useState<{[key: string]: {history: {name: string, state: 'show' | 'closing' }[]}}>({});
     const [activeStack, setActiveStack] = useState<string>();
 
     const addStack = () => {
@@ -27,13 +27,20 @@ export const MobileNavigation: FC = ({children}) => {
 
     const back = (stackName: string) => {
         const prepareStacksMap = {...stackMap};
-        prepareStacksMap[stackName].history.pop();
+        prepareStacksMap[stackName].history[prepareStacksMap[stackName].history.length - 1].state = "closing";
         setStackMap(prepareStacksMap);
+
+        const timeout = setTimeout(() => {
+            prepareStacksMap[stackName].history.pop();
+            console.log(prepareStacksMap[stackName]);
+            setStackMap(prepareStacksMap);
+            clearTimeout(timeout);
+        }, 400)
     }
 
     const push = (stackName: string, screenName: string) => {
         const prepareStacksMap = {...stackMap};
-        prepareStacksMap[stackName].history.push(screenName);
+        prepareStacksMap[stackName].history.push({name: screenName, state: 'show'});
         setStackMap(prepareStacksMap);
     }
 

@@ -27,15 +27,16 @@ export const MobileNavigation: FC = ({children}) => {
 
     const back = (stackName: string) => {
         const prepareStacksMap = {...stackMap};
+
         prepareStacksMap[stackName].history[prepareStacksMap[stackName].history.length - 1].state = "closing";
         setStackMap(prepareStacksMap);
 
         const timeout = setTimeout(() => {
+            const prepareStacksMap = {...stackMap};
             prepareStacksMap[stackName].history.pop();
-            console.log(prepareStacksMap[stackName]);
             setStackMap(prepareStacksMap);
             clearTimeout(timeout);
-        }, 400)
+        }, 200)
     }
 
     const push = (stackName: string, screenName: string) => {

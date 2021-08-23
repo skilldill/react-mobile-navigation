@@ -20,7 +20,7 @@ export const Stack: FC<StackProps> = (props) => {
         addStack(name);
     }, [])
 
-    useEffect(() => console.log(stackMap), [stackMap])
+    // useEffect(() => console.log(stackMap[name]), [stackMap])
 
     const stackScreensMap = createStackScreensMap(children);
 

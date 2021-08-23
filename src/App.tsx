@@ -51,23 +51,25 @@ const ThridScreen = () => {
 
 function App() {
   return (
-    <MobileNavigation>
-      <Stack name="baseStack">
+    <>
+      <MobileNavigation>
+        <Stack name="baseStack">
 
-        <StackScreen name="first">
-          <FirstScreen />
-        </StackScreen>
+          <StackScreen name="first">
+            <FirstScreen />
+          </StackScreen>
 
-        <StackScreen name="second">
-          <SecondScreen />
-        </StackScreen>
+          <StackScreen name="second">
+            <SecondScreen />
+          </StackScreen>
 
-        <StackScreen name="third">
-          <ThridScreen />
-        </StackScreen>
+          <StackScreen name="third">
+            <ThridScreen />
+          </StackScreen>
 
-      </Stack>
-    </MobileNavigation>
+        </Stack>
+      </MobileNavigation>
+    </>
   );
 }
 

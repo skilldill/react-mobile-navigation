@@ -26,6 +26,7 @@ export const MobileNavigationService = (stackName: string) => {
     return {
         ...history,
 
+        platform: navigation.platform,
         stackMap: navigation.stackMap,
         activeStack: navigation.activeStack,
         addStack: navigation.addStack,

@@ -14,13 +14,40 @@ interface StackProps {
 export const Stack: FC<StackProps> = (props) => {
     const {children, name} = props;
 
-    const {addStack, activeStack, stackMap} = MobileNavigationService(name);
+    const {addStack, activeStack, stackMap, platform} = MobileNavigationService(name);
 
     useEffect(() => {
         addStack(name);
     }, [])
 
     const stackScreensMap = createStackScreensMap(children);
+
+    if (platform === 'android') {
+        return (
+            <div className={styles.stackNavigation} style={{display: activeStack === name ? 'block' : 'none'}}>
+                <ScreenAndroid
+                    stackName={name}
+                    index={0}
+                >
+                    {(children as any[])[0]}
+                </ScreenAndroid>
+    
+                {!!stackMap && !!stackMap[name] && (stackMap[name].history.length > 0) && (
+                    stackMap[name].history.map((screen, i) => 
+                        <ScreenAndroid 
+                            stackName={name}
+                            animated
+                            key={i} 
+                            index={i} 
+                            closing={screen.state === 'closing'}
+                        >
+                            {stackScreensMap[screen.name]}
+                        </ScreenAndroid>
+                    )
+                )}
+            </div>
+        )
+    }
 
     return (
         <div className={styles.stackNavigation} style={{display: activeStack === name ? 'block' : 'none'}}>

@@ -2,7 +2,13 @@ import React, { FC, useState } from "react";
 
 import {MobileNavigationContext} from "./MobileNavigation.context";
 
-export const MobileNavigation: FC = ({children}) => {
+interface MobileNavigationModel {
+    platform?: 'android' | 'ios'
+}
+
+export const MobileNavigation: FC<MobileNavigationModel> = (props) => {
+    const {children, platform} = props;
+
     const [stackMap, setStackMap] = useState<{[key: string]: {history: {name: string, state: 'show' | 'closing' }[]}}>({});
     const [activeStack, setActiveStack] = useState<string>();
 
@@ -48,6 +54,7 @@ export const MobileNavigation: FC = ({children}) => {
     const values = {
         activeStack,
         stackMap,
+        platform: !!platform ? platform : 'ios', 
 
         setActiveStack,
         back,

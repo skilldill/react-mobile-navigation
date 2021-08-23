@@ -51,8 +51,7 @@ const ThridScreen = () => {
 
 function App() {
   return (
-    <>
-      <MobileNavigation>
+      <MobileNavigation platform="ios">
         <Stack name="baseStack">
 
           <StackScreen name="first">
@@ -69,7 +68,6 @@ function App() {
 
         </Stack>
       </MobileNavigation>
-    </>
   );
 }
 

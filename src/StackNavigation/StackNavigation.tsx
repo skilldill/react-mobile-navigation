@@ -20,19 +20,31 @@ export const Stack: FC<StackProps> = (props) => {
         addStack(name);
     }, [])
 
-    // useEffect(() => console.log(stackMap[name]), [stackMap])
-
     const stackScreensMap = createStackScreensMap(children);
 
     return (
         <div className={styles.stackNavigation} style={{display: activeStack === name ? 'block' : 'none'}}>
-            <ScreenIOS index={0}>
+            <ScreenIOS 
+                index={0} 
+                translated={stackMap[name] && 
+                    stackMap[name].history.length > 0 && 
+                    stackMap[name].history[stackMap[name].history.length - 1].state === 'show'
+                }
+            >
                 {(children as any[])[0]}
             </ScreenIOS>
 
             {!!stackMap && !!stackMap[name] && (stackMap[name].history.length > 0) && (
                 stackMap[name].history.map((screen, i) => 
-                    <ScreenIOS key={i} index={i} closing={screen.state === 'closing'}>
+                    <ScreenIOS 
+                        animated
+                        key={i} 
+                        index={i} 
+                        closing={screen.state === 'closing'}
+                        translated={i !== (stackMap[name].history.length - 1) && 
+                            stackMap[name].history[stackMap[name].history.length - 1].state === 'show'
+                        }
+                    >
                         {stackScreensMap[screen.name]}
                     </ScreenIOS>
                 )

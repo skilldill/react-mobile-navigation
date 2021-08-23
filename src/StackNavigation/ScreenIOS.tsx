@@ -7,15 +7,17 @@ interface ScreenIOSProps {
     index: number;
     closing?: boolean;
     translated?: boolean;
+    animated?: boolean;
 }
 
 export const ScreenIOS: FC<ScreenIOSProps> = (props) => {
-    const {children, index, closing, translated} = props;
+    const {children, index, closing, translated, animated} = props;
 
     return (
         <div 
             className={cn({
                 [styles.screenIOS]: true,
+                [styles.screenIOSanimated]: animated,
                 [styles.screenIOSclose]: closing,
                 [styles.screenIOStranslated]: translated,
             })} 

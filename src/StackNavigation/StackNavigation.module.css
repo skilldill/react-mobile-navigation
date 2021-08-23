@@ -39,9 +39,18 @@ body {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     background-color: #fff;
+    transition: all .2s;
+}
+
+.screenIOSanimated {
     animation: translationForwardIOS .2s ease-out 0s;
 }
 
 .screenIOSclose {
     animation: translationBackIOS .2s ease-out 0s;
+}
+
+.screenIOStranslated {
+    transition: all .2s;
+    transform: translateX(-15%);
 }

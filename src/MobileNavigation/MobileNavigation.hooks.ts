@@ -1,7 +1,7 @@
 import {useContext} from "react";
 import { MobileNavigationContext } from "./MobileNavigation.context";
 
-export const useMobileNavigation = (stackName: string) => {
+export const useStackNavigation = (stackName: string) => {
     const navigation = useContext(MobileNavigationContext);
 
     const history = {
@@ -10,6 +10,13 @@ export const useMobileNavigation = (stackName: string) => {
     }
 
     return history;
+}
+
+export const useMobileNavigation = () => {
+    const navigation = useContext(MobileNavigationContext);
+    const changeStack = navigation.setActiveStack;
+
+    return {changeStack};
 }
 
 /**

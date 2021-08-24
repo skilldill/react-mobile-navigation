@@ -1,10 +1,11 @@
 import React from 'react';
 
-import { MobileNavigation, useMobileNavigation } from './MobileNavigation';
+import { MobileNavigation, useStackNavigation } from './MobileNavigation';
 import { Stack, StackScreen } from './StackNavigation';
+import {Tab, Tabs} from "./TabNavigation"
 
 const FirstScreen = () => {
-  const history = useMobileNavigation("baseStack");
+  const history = useStackNavigation("firstStack");
 
   return (
     <div>
@@ -18,7 +19,7 @@ const FirstScreen = () => {
 }
 
 const SecondScreen = () => {
-  const history = useMobileNavigation("baseStack");
+  const history = useStackNavigation("firstStack");
 
   return (
     <div>
@@ -36,7 +37,7 @@ const SecondScreen = () => {
 }
 
 const ThridScreen = () => {
-  const history = useMobileNavigation("baseStack");
+  const history = useStackNavigation("firstStack");
 
   return (
     <div>
@@ -52,21 +53,45 @@ const ThridScreen = () => {
 function App() {
   return (
       <MobileNavigation platform="ios">
-        <Stack name="baseStack">
+        <Tabs>
+          <Tab title="First" titleActive="Firts">
+            <Stack name="firstStack">
 
-          <StackScreen name="first">
-            <FirstScreen />
-          </StackScreen>
+              <StackScreen name="first">
+                <FirstScreen />
+              </StackScreen>
 
-          <StackScreen name="second">
-            <SecondScreen />
-          </StackScreen>
+              <StackScreen name="second">
+                <SecondScreen />
+              </StackScreen>
 
-          <StackScreen name="third">
-            <ThridScreen />
-          </StackScreen>
+              <StackScreen name="third">
+                <ThridScreen />
+              </StackScreen>
 
-        </Stack>
+            </Stack>
+          </Tab>
+
+          <Tab title="Second" titleActive="Second">
+            <Stack name="secondStack">
+
+              <StackScreen name="first">
+                <FirstScreen />
+              </StackScreen>
+
+              <StackScreen name="second">
+                <SecondScreen />
+              </StackScreen>
+
+              <StackScreen name="third">
+                <ThridScreen />
+              </StackScreen>
+
+            </Stack>
+          </Tab>
+        </Tabs>
+
+        
       </MobileNavigation>
   );
 }

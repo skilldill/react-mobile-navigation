@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 
 import {MobileNavigationContext} from "./MobileNavigation.context";
 
@@ -11,6 +11,10 @@ export const MobileNavigation: FC<MobileNavigationModel> = (props) => {
 
     const [stackMap, setStackMap] = useState<{[key: string]: {history: {name: string, state: 'show' | 'closing' }[]}}>({});
     const [activeStack, setActiveStack] = useState<string>();
+
+    useEffect(() => {
+        console.log(stackMap);
+    }, [stackMap])
 
     const addStack = () => {
         let inProcess = false;

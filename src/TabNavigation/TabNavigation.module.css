@@ -13,9 +13,8 @@
     bottom: 0;
     left: 0;
     right: 0;
-    padding-bottom: var(--ion-safe-area-bottom, 0);
-    background-color: var(--ion-background-color, #fafafa);
-    border-top: .5px solid var(--ion-border-color, #ccc);
+    background-color: #fafafa;
+    border-top: .5px solid #ccc;
 }
 
 .tabbarContent {

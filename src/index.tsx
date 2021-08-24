@@ -16,6 +16,6 @@ ReactDOM.render(
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
 
-export {MobileNavigation, useMobileNavigation, useStackNavigation} from "./MobileNavigation";
+export {MobileNavigation, useMobileNavigation, useStackNavigation, useStackParams} from "./MobileNavigation";
 export {Stack, StackScreen} from "./StackNavigation";
 export {Tabs, Tab} from "./TabNavigation";

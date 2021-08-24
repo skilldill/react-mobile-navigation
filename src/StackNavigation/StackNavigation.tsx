@@ -17,7 +17,6 @@ export const Stack: FC<StackProps> = (props) => {
     const {addStack, activeStack, stackMap, platform} = MobileNavigationService(name);
 
     useEffect(() => {
-        console.log('DID MOUNT', name);
         addStack(name);
     }, [])
 

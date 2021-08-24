@@ -37,7 +37,7 @@ export const Navigation = () => {
                         <SecondScreen stackName="secondStack" />
                     </StackScreen>
 
-                    <StackScreen name="help">
+                    <StackScreen name="profile">
                         <ThirdScreen stackName="secondStack" />
                     </StackScreen>
                 </Stack>

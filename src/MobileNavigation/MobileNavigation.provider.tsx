@@ -11,6 +11,7 @@ export const MobileNavigation: FC<MobileNavigationModel> = (props) => {
 
     const [stackMap, setStackMap] = useState<{[key: string]: {history: {name: string, state: 'show' | 'closing' }[]}}>({});
     const [activeStack, setActiveStack] = useState<string>();
+    const [params, setParams] = useState<any>();
 
     const addStack = () => {
         let inProcess = false;
@@ -45,7 +46,9 @@ export const MobileNavigation: FC<MobileNavigationModel> = (props) => {
         }, 200)
     }
 
-    const push = (stackName: string, screenName: string) => {
+    const push = (stackName: string, screenName: string, params?: any) => {
+        !!params && setParams(params);
+
         const prepareStacksMap = {...stackMap};
         prepareStacksMap[stackName].history.push({name: screenName, state: 'show'});
         setStackMap(prepareStacksMap);
@@ -55,6 +58,7 @@ export const MobileNavigation: FC<MobileNavigationModel> = (props) => {
         activeStack,
         stackMap,
         platform: !!platform ? platform : 'ios', 
+        params,
 
         setActiveStack,
         back,

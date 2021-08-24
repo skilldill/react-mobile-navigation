@@ -1,5 +1,5 @@
-import React, { FC } from "react";
-import {useStackNavigation} from "../../MobileNavigation";
+import React, { FC, useEffect } from "react";
+import {useStackNavigation, useStackParams} from "../../MobileNavigation";
 import cn from "classnames";
 
 import {ScreenProps} from "./Screen.model";
@@ -7,6 +7,11 @@ import styles from "./screens.module.css";
 
 export const SecondScreen: FC<ScreenProps> = ({stackName}) => {
     const history = useStackNavigation(stackName);
+    const {id} = useStackParams<{id: number}>();
+
+    useEffect(() => {
+        console.log(id);
+    }, [id])
 
     const handleClick = () => {
         history.push('profile');

@@ -9,7 +9,7 @@ export const FirstScreen: FC<ScreenProps> = ({stackName}) => {
     const history = useStackNavigation(stackName);
 
     const handleClick = () => {
-        history.push('settings');
+        history.push('settings', {id: 1});
     }
 
     return (

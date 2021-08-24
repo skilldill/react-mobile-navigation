@@ -5,11 +5,16 @@ export const useStackNavigation = (stackName: string) => {
     const navigation = useContext(MobileNavigationContext);
 
     const history = {
-        push: (name: string) => navigation.push(stackName, name),
+        push: (name: string, params?: any) => navigation.push(stackName, name, params),
         back: () => navigation.back(stackName),
     }
 
     return history;
+}
+
+export const useStackParams = <T = any>() => {
+    const navigation = useContext(MobileNavigationContext);
+    return navigation.params as T;
 }
 
 export const useMobileNavigation = () => {

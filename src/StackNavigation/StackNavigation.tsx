@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useState} from "react";
+import React, {FC, useEffect} from "react";
 import { MobileNavigationService } from "../MobileNavigation";
 
 import { ScreenAndroid } from "./ScreenAndroid";
@@ -17,6 +17,7 @@ export const Stack: FC<StackProps> = (props) => {
     const {addStack, activeStack, stackMap, platform} = MobileNavigationService(name);
 
     useEffect(() => {
+        console.log('DID MOUNT', name);
         addStack(name);
     }, [])
 

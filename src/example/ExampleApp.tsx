@@ -5,7 +5,7 @@ import { Navigation } from "./Navigation";
 
 export const ExampleApp = () => {
     return (
-        <MobileNavigation>
+        <MobileNavigation platform="android">
             <Navigation />
         </MobileNavigation>
     )

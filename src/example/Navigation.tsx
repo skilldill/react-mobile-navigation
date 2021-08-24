@@ -11,8 +11,8 @@ export const Navigation = () => {
 
     return (
         <Tabs onChange={changeStack}>
-            <Tab name="firstStack" title="First" titleActive="FIRTS">
-                <Stack name="firstStack">
+            <Tab name="firstStack" title="First" titleActive="FIRST">
+                <Stack name="firstStack" key="firstStack">
                     <StackScreen name="home">
                         <FirstScreen stackName="firstStack" />
                     </StackScreen>
@@ -28,7 +28,7 @@ export const Navigation = () => {
             </Tab>
 
             <Tab name="secondStack" title="Second" titleActive="SECOND">
-                <Stack name="secondStack">
+                <Stack name="secondStack" key="secondStack">
                     <StackScreen name="home">
                         <FirstScreen stackName="secondStack" />
                     </StackScreen>

@@ -2,6 +2,7 @@ import React, {FC} from "react";
 import styles from "./TabNavigation.module.css";
 
 interface TabProps {
+    name: string,
     title: React.ReactNode,
     titleActive: React.ReactNode,
 }
